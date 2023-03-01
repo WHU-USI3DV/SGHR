@@ -1,1 +1,1 @@
-# RoReg: Pairwise Point Cloud Registration with Oriented Descriptors and Local Rotations
+## Robust Multiview Point Cloud Registration with Reliable Pose Graph Initialization and History Reweighting

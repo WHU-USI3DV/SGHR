@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>RoReg: Pairwise Point Cloud Registration with Oriented Descriptors and Local Rotations</title>
+    <title>Robust Multiview Point Cloud Registration with Reliable Pose Graph Initialization and History Reweighting</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
@@ -16,44 +16,36 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <h2>RoReg: Pairwise Point Cloud Registration with Oriented Descriptors and Local Rotations</h2>
-            <h4 style="color:#5a6268;">IEEE TPAMI 2023</h4>
+            <h2>Robust Multiview Point Cloud Registration with Reliable Pose Graph Initialization and History Reweighting</h2>
+            <h4 style="color:#5a6268;">CVPR 2023</h4>
             <hr>
             <h6> <a href="https://scholar.google.com.hk/citations?hl=zh-CN&user=YAdDCr0AAAAJ" target="_blank">Haiping Wang</a><sup>*,1</sup>, 
                 <a href="https://liuyuan-pal.github.io/" target="_blank">Yuan Liu</a><sup>*,2</sup>,
-                <a href="https://qingyonghu.github.io/" target="_blank">Qingyong Hu</a><sup>3</sup>,
-                <a href="http://www.cs.ox.ac.uk/people/bing.wang/" target="_blank">Bing Wang</a><sup>4</sup>,
-                <a href="" target="_blank">Jianguo Wang</a><sup>5</sup>,
                 <a href="https://dongzhenwhu.github.io/" target="_blank">Zhen Dong</a><sup>&dagger;,1</sup>, 
-                <a href="http://yulanguo.me/" target="_blank">Yulan Guo</a><sup>6</sup>,
-                <a href="https://www.cs.hku.hk/people/academic-staff/wenping" target="_blank">Wenping Wang</a><sup>7</sup>
+                <a href="http://yulanguo.me/" target="_blank">Yulan Guo</a><sup>3</sup>,
+                <a href="http://yulanguo.me/" target="_blank">Yushen Liu</a><sup>4</sup>,
+                <a href="https://www.cs.hku.hk/people/academic-staff/wenping" target="_blank">Wenping Wang</a><sup>5</sup>
                 <a href="https://scholar.google.com/citations?hl=zh-CN&user=DZsF2oIAAAAJ" target="_blank">Bisheng Yang</a><sup>&dagger;,1</sup> <br>
             
               <p>
               <sup>1</sup>Wuhan University &nbsp;&nbsp; 
               <sup>2</sup>The University of Hong Kong &nbsp;&nbsp; 
-              <sup>3</sup>University of Oxford &nbsp;&nbsp; 
-              <sup>4</sup>The Hong Kong Polytechnic University &nbsp;&nbsp; 
-              <sup>5</sup>DiDi Chuxing &nbsp;&nbsp;  <br>
-              <sup>6</sup>Sun Yat-sen University &nbsp;&nbsp; 
-              <sup>7</sup>Texas A&M University &nbsp;&nbsp; <br>
+              <sup>3</sup>Sun Yat-sen University &nbsp;&nbsp; 
+              <sup>4</sup>Tsinghua University &nbsp;&nbsp; 
+              <sup>5</sup>Texas A&M University &nbsp;&nbsp; <br>
 
               <sup>*</sup>The first two authors contribute equally. &nbsp;&nbsp; 
               <sup>&dagger;</sup>Corresponding authors. &nbsp;&nbsp; 
               </p>
             <div class="row justify-content-center">
               <div class="column">
-                  <p class="mb-5"><a class="btn btn-large btn-light" href="https://ieeexplore.ieee.org/document/10044259" role="button"  target="_blank">
+                  <p class="mb-5"><a class="btn btn-large btn-light" href="" role="button"  target="_blank">
                     <i class="fa fa-file"></i> Paper</a> </p>
               </div>
               <div class="column">
-                  <p class="mb-5"><a class="btn btn-large btn-light" href="https://github.com/HpWang-whu/RoReg" role="button"  target="_blank">
+                  <p class="mb-5"><a class="btn btn-large btn-light" href="https://github.com/WHU-USI3DV/SGHR" role="button"  target="_blank">
                     <i class="fa fa-github-alt"></i> Code</a> </p>
               </div>
-              <div class="column">
-                  <p class="mb-5"><a class="btn btn-large btn-light" href="https://github.com/HpWang-whu/RoReg/blob/master/media/RoReg_Appendix.pdf" role="button"  target="_blank">
-                    <i class="fa fa-file"></i> Supplementary Material</a> </p>
-            </div>
             </div>
           </div>
         </div>
@@ -69,18 +61,25 @@
           <h3>Abstract</h3>
           <hr style="margin-top:0px">
           <p class="text-justify">  </p>
-          <p class="text-justify"> We present RoReg, a novel point cloud registration framework that fully exploits oriented descriptors and estimated local rotations in the whole registration pipeline. Previous methods mainly focus on extracting rotation-invariant descriptors for registration but unanimously neglect the orientations of descriptors. In this paper, we show that the oriented descriptors and the estimated local rotations are very useful in the whole registration pipeline, including feature description, feature detection, feature matching, and transformation estimation. Consequently, we design a novel oriented descriptor RoReg-Desc and apply RoReg-Desc to estimate the local rotations. Such estimated local rotations enable us to develop a rotation-guided detector, a rotation coherence matcher, and a one-shot-estimation RANSAC, all of which greatly improve the registration performance. Extensive experiments demonstrate that RoReg achieves state-of-the-art performance on the widely-used 3DMatch and 3DLoMatch datasets, and also generalizes well to the outdoor ETH dataset. In particular, we also provide in-depth analysis on each component of RoReg, validating the improvements brought by oriented descriptors and the estimated local rotations. </p>
+          <p class="text-justify"> In this paper, we present a new method for the multiview registration of point cloud.Previous multiview registration
+             methods rely on exhaustive pairwise registration to construct a densely-connected pose graph and apply Iteratively Reweighted Least Square (IRLS) 
+             on the pose graph to compute the scan poses. However, constructing a densely-connected graph is time-consuming and contains lots of outlier edges, 
+             which makes the subsequent IRLS struggle to find correct poses. To address the above problems, we first propose to use a neural network to estimate
+              the overlap between scan pairs, which enables us to construct a sparse but reliable pose graph. Then, we design a novel history reweighting 
+              function in the IRLS scheme, which has strong robustness to outlier edges on the graph. In comparison with existing multiview registration methods, 
+              our method achieves $11$\% higher registration recall on the 3DMatch dataset and $\sim13$\% lower registration errors on the ScanNet dataset while 
+              reducing $\sim70$\% required pairwise registrations. Comprehensive ablation studies are conducted to demonstrate the effectiveness of our designs. </p>
           <hr style="margin-top:0px">
             <figure align="center"></figure>
-              <p align="center"><img src="./roreg/pipeline.png" width="1100"/>
+              <p align="center"><img src="./sghr/pipeline.png" width="1100"/>
               </p>
             </figure>
               <!-- <br><br> -->
           <p class="text-justify">  </p>
-          <p class="text-caption"> Fig.1 Pipeline of RoReg. We apply oriented descriptors (RoReg-Desc) and estimated local rotations in all four steps of the point cloud registration pipeline, i.e., feature description,
-            feature detection, feature matching, and transformation estimation. Specifically, We first extract RoReg-Desc (Sec.3.2) and demonstrate how to estimate local rotations from RoReg-Descs (Sec.3.3). 
-            Then, a set of keypoints are selected utilizing the RoReg-Descs with the rotation-guided detector (Sec.3.4). The detected keypoints are matched  to correspondences by the rotation coherence matcher (Sec.3.5). 
-            Finally, transformations are estimated by the OSE-RANSAC given the estimated correspondences (Sec.3.6).</p>
+          <p class="text-caption"> Fig.1 Pipeline of SGHR. Given $N$ unaligned partial scans (1), our target is to register all these scans into a completed point cloud (4). 
+            SGHR has two contributions. (2) We learn a global feature vector to initialize a sparse pose graph which contains much less outliers and reduces the required number of pairwise registrations.
+            (3) We propose a novel IRLS scheme. In our IRLS scheme, we initialize weights from both global features and pairwise registrations. Then, we design a history reweighting function to iteratively refine poses, which improves the robustness to outliers.
+            </p>
         </div>
       </div>
     </div>
@@ -92,108 +91,28 @@
     <div class="container">
       <div class="row">
         <div class="col-12 text-center">
-            <h3>Brief Introduction</h3>
-
-            <hr style="margin-top:0px">
-            <h4 style="margin-top:20px; margin-bottom:20px; color:#717980">Feature Description: RoReg-Desc extraction (Sec.3.2)</h4>
-            <figure align="center"></figure>
-            <p align="center"><img src="./roreg/eqvinv.png" width="600"/>
-            </p>
-          </figure>
-            <!-- <br><br> -->
-          <p class="text-justify">  </p>
-          <p class="text-caption"> Fig.2. Rotation-equivariance and rotation-invariance properties of RoReg-Desc.
-             Existing descriptors such as PerfectMatch and SpinNet focus on rotation-invariance. 
-             They typically rely on a local reference frame work (LRF) to lose the local orientation information for
-             rotation-invariance, which is sensitive to noise/density variations and contains ambiguity. 
-             In contrast, our RoReg-Desc consists of a rotation-equivariant part to preserve
-             the orientation information and a rotation-invariant part for matching. Our RoReg-Desc contains 60 permuted row-vectors. 
-             Applying a rotation in the icosahedral group will bring a specific permutation to the rotation-equivariant part $F$ of RoReg-Desc. 
-             The row-wise pooling results in a descriptor $d$ that is invariant to rotations in icosahedral group. Proofs can be found in the supplementary material.
-             We validate that the rotation-invariant part of RoReg-Desc is more robust and distinctive than LRF-based descriptors and further
-             utilize the rotation-equivariant part of RoReg-Desc to improve the following registration steps by introducing local rotations.      
-
-          <hr style="margin-top:0px">
-            <h4 style="margin-top:20px; margin-bottom:20px; color:#717980">SO(3)-equivariance Usage: local rotation estimation (Sec.3.3)</h4>
-            <figure align="center"></figure>
-            <p align="center"><img src="./roreg/orienteddes.png" width="700"/>
-            </p>
-          </figure>
-            <!-- <br><br> -->
-          <p class="text-justify">  </p>
-          <p class="text-caption"> Fig.3. Local rotation estimation on paired RoReg-Descs. RoReg-Desc encodes local orientation information as 
-            discussed in Fig.2 and shown in the Left. Thus, by utilizing the local orientation information of a RoReg-Desc pair, we can decode a local rotation that 
-            can align their local orientations. Once the local rotation is correctly estimated, it 
-            will exactly coincide with the global rotation in the scan registration. We will utilize local rotations (rotation-equivariance) in 
-            the following steps of point cloud registration, i.e., feature detection, feature matching, and transformation estimation.
-          </p>
-
-          <hr style="margin-top:0px">
-          <h4 style="margin-top:20px; margin-bottom:20px; color:#717980">Feature Detection: rotation-guided detection (Sec.3.4)</h4>
-          <figure align="center"></figure>
-          <p align="center"><img src="./roreg/intro_det.png" width="600"/>
-          </p>
-          </figure>
-            <!-- <br><br> -->
-          <p class="text-justify">  </p>
-          <p class="text-caption"> Fig.4. We propose a novel loss for feature (keypoint) detection. Besides the distinctiveness check of rotation-invariant 
-            features, we further encourage that the keypoints should own clear/distinct local orientations to estimate correct local rotations. Such a 
-            rotation-guided loss achieves a stable convergence of the detector training and thus improves the repeatability and matchability of detected keypoints.
-          </p>
-
-          <hr style="margin-top:0px">
-          <h4 style="margin-top:20px; margin-bottom:20px; color:#717980">Feature Matching: rotation coherence matcher</h4>
-          <figure align="center"></figure>
-          <p align="center"><img src="./roreg/intro_mat.png" width="600"/>
-          </p>
-          </figure>
-            <!-- <br><br> -->
-          <p class="text-justify"> </p>
-          <p class="text-caption"> Fig.5. In feature matching, we observe that local rotations are essential for finding true
-            correspondences, because the local rotations estimated from true correspondences are correct and consistent while the
-            local rotations estimated from false correspondences are randomly distributed. We thus introduce such a clue to transformer-based
-            matcher to encouge the established correspondences share similar local rotations, which can overcome the influence of repetitive
-            patterns to some extent.
-          </p>
-
-        <hr style="margin-top:0px">
-        <h4 style="margin-top:20px; margin-bottom:20px; color:#717980">Transformation Estimation: OSE-RANSAC</h4>
-        <figure align="center"></figure>
-        <p align="center"><img src="./roreg/intro_est.png" width="600"/>
-        </p>
-        </figure>
-          <!-- <br><br> -->
-        <p class="text-justify">  </p>
-        <p class="text-caption"> Fig.6. The classical RANSAC samples correspondence triplets to generate transformation hypotheses on every
-          triplet with the Kabsch algorithm, which contain many spurious solutions with low inlier ratios. By utilizing local rotations, our OSE-RANSAC
-          generates a hypothesis with only one correspondence, which reduces the searching space and improves the registration quality, especially
-          when the inlier ratio is low.
-        </p>
-
-
-        </div>
-      </div>
-    </div>
-  </section>
-  <br>
-
-  <!-- Cross-Appearance Hallucination -->
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center">
             <h3>Qualitative Results</h3>
             <hr style="margin-top:0px">
-            <h4 style="margin-top:20px; margin-bottom:20px; color:#717980">Example results on 3DMatch/3DLoMatch/ETH</h4>
-            <figure align="center"></figure>
-            <p align="center"><img src="./roreg/main.png" width="1100"/>
-            </p>
-          </figure>
-            <!-- <br><br> -->
+            <h4 style="margin-top:20px; margin-bottom:20px; color:#717980">Selected multiview registration results on 3DMatch/ScanNet/ETH</h4>
+              <figure align="center"></figure>
+              <p align="center"><img src="./sghr/qualitive.png" width="1100"/>
+              </p>
+            </figure>
+
+            <h4 style="margin-top:20px; margin-bottom:20px; color:#717980">Comparison on 3DMatch and ETH</h4>
+              <figure align="center"></figure>
+              <p align="center"><img src="./sghr/3dmatch.png" width="800"/>
+              </p>
+            </figure>
+
+            <h4 style="margin-top:20px; margin-bottom:20px; color:#717980">Comparison on ScanNet</h4>
+              <figure align="center"></figure>
+              <p align="center"><img src="./sghr/scannet.png" width="800"/>
+              </p>
+            </figure>
+
         <p class="text-justify">  </p>
-        <!-- <p class="text-caption"> Fig.7.  (Left) Qualitative comparison with baselines. (Right) Completed scenes by YOHO and some input partial scans.</p> -->
         </div>
-      </div>
     </div>
   </section>
   <br>
@@ -205,22 +124,7 @@
           <h3>Citation</h3>
           <hr style="margin-top:0px">
 <pre style="background-color: #e9eeef;padding: 1.25em 1.5em">
-<code>@inproceedings{wang2022you,
-  title={You only hypothesize once: Point cloud registration with rotation-equivariant descriptors},
-  author={Wang, Haiping and Liu, Yuan and Dong, Zhen and Wang, Wenping},
-  booktitle={Proceedings of the 30th ACM International Conference on Multimedia},
-  pages={1630--1641},
-  year={2022}
-
-@ARTICLE{wang2023roreg,
-  author={Wang, Haiping and Liu, Yuan and Hu, Qingyong and Wang, Bing and Chen, Jianguo and Dong, Zhen and Guo, Yulan and Wang, Wenping and Yang, Bisheng},
-  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
-  title={RoReg: Pairwise Point Cloud Registration with Oriented Descriptors and Local Rotations}, 
-  year={2023},
-  volume={},
-  number={},
-  pages={1-18},
-  doi={10.1109/TPAMI.2023.3244951}}
+<code>
 }</code></pre>
           <hr>
       </div>
