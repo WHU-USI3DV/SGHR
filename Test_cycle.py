@@ -126,7 +126,7 @@ class cycle_tester():
                         # guarantee meaningful rotation matrix
                         if np.linalg.det(Tij[0:3,0:3])<0:
                             Tij[0:2] = Tij[[1,0]]
-                        # we use the after pairwise registration overlap check
+                        # we use ransac's inlier number/100
                         irs[i,j], irs[j,i] = ir*n_matches/100, ir*n_matches/100
                         Ts[i,j] = Tij
                         Ts[j,i] = np.linalg.inv(Tij)
