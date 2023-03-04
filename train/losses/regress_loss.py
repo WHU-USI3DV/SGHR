@@ -1,5 +1,6 @@
 import torch
-from train.losses.base import Loss, _f2overlap
+from utils.utils import _f2overlap
+from train.losses.base import Loss
     
 class L1_loss(Loss):
     def __init__(self,cfg,topk = False):

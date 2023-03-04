@@ -22,7 +22,7 @@ backbone = 'yoho'
 #Dirs
 Dirs.add_argument('--base_dir',type=str,default=base_dir,
                         help="base dir containing the whole project")
-Dirs.add_argument("--origin_data_dir",type=str,default=f"{base_dir}/origin_data",
+Dirs.add_argument("--origin_data_dir",type=str,default=f"{base_dir}",
                         help="the dir containing whole datas")
 Dirs.add_argument("--save_dir",type=str,default=f"./pre",
                         help="for eval results")
@@ -30,7 +30,7 @@ Dirs.add_argument("--backbone",type=str,default=backbone,
                         help='well trained model path')
 Dirs.add_argument("--model_fn",type=str,default=f"./checkpoints/{backbone}",
                         help='well trained model path')
-Dirs.add_argument("--input_feat_dir",type=str,default=f"{base_dir}/YOHO_FCGF/Testset",
+Dirs.add_argument("--input_feat_dir",type=str,default=f"{base_dir}",
                         help="eval cache dir")
 ############################################# Trainset  ##############################################
 Dataset_Args.add_argument("--aug_r_range",type=float,default=180,

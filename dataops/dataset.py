@@ -269,7 +269,7 @@ class scenewisedataset(torch.utils.data.Dataset):
         # load point cloud
         pt = dataset.get_kps(pid)
         # load pre-calculated YOHO features
-        feat = np.load(f'{self.d_feat}/{dataset.name}/YOHO_inv/{pid}.npy')
+        feat = np.load(f'{self.d_feat}/{dataset.name}/yoho_desc/{pid}.npy')
         return pt, feat
     
     def _resample_point_cloud(self, points, feats):
