@@ -105,6 +105,7 @@ python Test.py --dataset ETH
 python Test_cycle.py --dataset ETH --topk 6 --inlierd 0.2 --tau_2 0.5 --rr
 ```
 
+To evalute SGHR on your own dataset, you can follow [here](data/Readme.md).
 
 ## Citation
 

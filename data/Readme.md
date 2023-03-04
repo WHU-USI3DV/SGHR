@@ -16,7 +16,7 @@ where \<your dataset name\> is the name of your dataset (the folder name saved t
 ```
 python Test.py --dataset \<your dataset name\>
 ```
-- Construct sparse graph and condut multiview registration
+- Construct sparse graph and condute multiview registration
 ```
 python Test_cycle.py --dataset \<your dataset name\> --topk *** --inlierd ***
 ```
