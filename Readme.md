@@ -13,6 +13,9 @@ In this paper, we present a new method for the multiview registration of point c
 - 2023-04-01: The code of SGHR is released.
 - 2023-02-28: SGHR is accepted by CVPR 2023! :tada: :tada:
 
+## Pipeline
+
+<img src="utils/pipeline.png" alt="Network" style="zoom:50%;">
 
 ## Requirements
 Here we offer the [YOHO](https://github.com/HpWang-whu/YOHO) backbone SGHR. Thus YOHO requirements need to be met:
