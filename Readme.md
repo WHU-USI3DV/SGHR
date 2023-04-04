@@ -5,11 +5,12 @@
 In this paper, we present a new method for the multiview registration of point cloud. Previous multiview registration methods rely on exhaustive pairwise registration to construct a densely-connected pose graph and apply Iteratively Reweighted Least Square (IRLS) on the pose graph to compute the scan poses. However, constructing a densely-connected graph is time-consuming and contains lots of outlier edges, which makes the subsequent IRLS struggle to find correct poses. To address the above problems, we first propose to use a neural network to estimate the overlap between scan pairs, which enables us to construct a sparse but reliable pose graph. Then, we design a novel history reweighting function in the IRLS scheme, which has strong robustness to outlier edges on the graph. In comparison with existing multiview registration methods, our method achieves $11$\% higher registration recall on the 3DMatch dataset and $\sim13$\% lower registration errors on the ScanNet dataset while reducing $\sim70$\% required pairwise registrations. Comprehensive ablation studies are conducted to demonstrate the effectiveness of our designs.
 
 
-- [Preprint paper](). Coming soon!
+- [Preprint paper](https://arxiv.org/abs/2304.00467)
 <!-- - [Project page](https://whu-usi3dv.github.io/SGHR/). -->
 
 
 ## News
+- 2023-04-04：Release [SGHR](https://arxiv.org/abs/2304.00467) on Arxiv.
 - 2023-04-01: The code of SGHR is released.
 - 2023-02-28: SGHR is accepted by CVPR 2023! :tada: :tada:
 
@@ -116,7 +117,13 @@ To evalute SGHR on your own dataset, you can follow [here](data/Readme.md).
 
 Please consider citing SGHR if this program benefits your project
 ```
-
+@inproceedings{
+wang2023robust,
+title={Robust Multiview Point Cloud Registration with Reliable Pose Graph Initialization and History Reweighting},
+author={Haiping Wang and Yuan Liu and Zhen Dong and Yulan Guo and Yu-Shen Liu and Wenping Wang and Bisheng Yang},
+booktitle={Conference on Computer Vision and Pattern Recognition},
+year={2023}
+}
 ```
 
 ## Other Projects
