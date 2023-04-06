@@ -6,7 +6,6 @@ In this paper, we present a new method for the multiview registration of point c
 
 
 - [Preprint paper](https://arxiv.org/abs/2304.00467)
-<!-- - [Project page](https://whu-usi3dv.github.io/SGHR/). -->
 
 
 ## News
