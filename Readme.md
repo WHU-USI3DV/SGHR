@@ -1,23 +1,46 @@
-## Robust Multiview Point Cloud Registration with Reliable Pose Graph Initialization and History Reweighting
+<h1 align="center"> <p>😍 SGHR</p></h1>
+<h3 align="center">
+<a href="https://arxiv.org/abs/2304.00467" target="_blank">Robust Multiview Point Cloud Registration with Reliable Pose Graph Initialization and History Reweighting</a>
+</h3>
 
-[Haiping Wang](https://hpwang-whu.github.io/), [Yuan Liu](https://liuyuan-pal.github.io/), [Zhen Dong](https://dongzhenwhu.github.io/), [Yulan Guo](http://yulanguo.me/), [Yu-Shen Liu](https://yushen-liu.github.io/), [Wenping Wang](https://www.cs.hku.hk/people/academic-staff/wenping), [Bisheng Yang](http://3s.whu.edu.cn/info/1025/1415.htm)
+<h3 align="center">
+CVPR 2023
+</h3>
+
+<p align="center">
+<a href="https://scholar.google.com.hk/citations?hl=zh-CN&user=YAdDCr0AAAAJ" target="_blank">Haiping Wang</a><sup>*,1</sup>, 
+<a href="https://liuyuan-pal.github.io/" target="_blank">Yuan Liu</a><sup>*,2</sup>,
+<a href="https://dongzhenwhu.github.io/" target="_blank">Zhen Dong</a><sup>&dagger;,1</sup>, 
+<a href="http://yulanguo.me/" target="_blank">Yulan Guo</a><sup>3</sup>,
+<a href="https://yushen-liu.github.io/" target="_blank">Yu-Shen Liu</a><sup>4</sup>,
+<a href="https://www.cs.hku.hk/people/academic-staff/wenping" target="_blank">Wenping Wang</a><sup>5</sup>
+<a href="https://scholar.google.com/citations?hl=zh-CN&user=DZsF2oIAAAAJ" target="_blank">Bisheng Yang</a><sup>&dagger;,1</sup> <br>
+</p>
+
+<p align="center">
+<sup>1</sup>Wuhan University &nbsp;&nbsp; 
+<sup>2</sup>The University of Hong Kong &nbsp;&nbsp; 
+<sup>3</sup>Sun Yat-sen University &nbsp;&nbsp; 
+<sup>4</sup>Tsinghua University &nbsp;&nbsp; 
+<sup>5</sup>Texas A&M University &nbsp;&nbsp; <br>
+<sup>*</sup>The first two authors contribute equally. &nbsp;&nbsp; 
+<sup>&dagger;</sup>Corresponding authors. &nbsp;&nbsp; 
+</p>
 
 In this paper, we present a new method for the multiview registration of point cloud. Previous multiview registration methods rely on exhaustive pairwise registration to construct a densely-connected pose graph and apply Iteratively Reweighted Least Square (IRLS) on the pose graph to compute the scan poses. However, constructing a densely-connected graph is time-consuming and contains lots of outlier edges, which makes the subsequent IRLS struggle to find correct poses. To address the above problems, we first propose to use a neural network to estimate the overlap between scan pairs, which enables us to construct a sparse but reliable pose graph. Then, we design a novel history reweighting function in the IRLS scheme, which has strong robustness to outlier edges on the graph. In comparison with existing multiview registration methods, our method achieves $11$\% higher registration recall on the 3DMatch dataset and $\sim13$\% lower registration errors on the ScanNet dataset while reducing $\sim70$\% required pairwise registrations. Comprehensive ablation studies are conducted to demonstrate the effectiveness of our designs.
 
 
-- [Preprint paper](https://arxiv.org/abs/2304.00467)
 
-
-## News
-- 2023-04-04：Release [SGHR](https://arxiv.org/abs/2304.00467) on Arxiv.
+## 🆕 News
+- 2023-04-04: Release [SGHR](https://arxiv.org/abs/2304.00467) on Arxiv.
 - 2023-04-01: The code of SGHR is released.
-- 2023-02-28: SGHR is accepted by CVPR 2023! :tada: :tada:
+- 2023-02-28: SGHR is accepted by CVPR 2023! 🎉🎉
 
-## Pipeline
+## ✨ Pipeline
 
 <img src="utils/pipeline.png" alt="Network" style="zoom:50%;">
 
-## Requirements
+## 💻 Requirements
 Here we offer the [YOHO](https://github.com/HpWang-whu/YOHO) backbone SGHR. Thus YOHO requirements need to be met:
 - Ubuntu 14.04 or higher
 - CUDA 11.1 or higher
@@ -26,8 +49,9 @@ Here we offer the [YOHO](https://github.com/HpWang-whu/YOHO) backbone SGHR. Thus
 
 Specifically, The code has been tested with:
 - Ubuntu 16.04, CUDA 11.1, python 3.7.10, Pytorch 1.7.1, GeForce RTX 2080Ti.
+- Ubuntu 20.04, CUDA 11.1, python 3.7.16, Pytorch 1.10.0, GeForce RTX 4090.
 
-## Installation
+## 🔧 Installation
 - First, create the conda environment:
   ```
   conda create -n sghr python=3.7
@@ -52,7 +76,7 @@ Specifically, The code has been tested with:
   cd ..
   ```
 
-## Dataset & Pretrained model
+## 💾 Dataset & Pretrained model
 The datasets are accessible in [BaiduDesk](https://pan.baidu.com/s/1FcAPjmrsJ6EEPLbtf85Irw)(Code:oouk) and Google Cloud:
 
 Trainset: 
@@ -82,14 +106,14 @@ data/
 └── ETH/
 ```
 
-## Train
+## 🚅 Train
 You can train SGHR with the 3dmatch_train dataset downloaded above, where we offer the 32-dim **rotation-invariant** yoho-desc we extracted on 3dmatch_train and you can also extract 32-dim [invariant yoho-desc](https://github.com/HpWang-whu/YOHO)(row-pooling on yoho-desc) yourself and save the features to '''data/3dmatch_train/\<scene\>/yoho_desc'''.
 Then, you can train SGHR with the following commond:
 ```
 python Train.py
 ```
 
-## Test
+## 💯 Test
 To evalute SGHR on 3DMatch and 3DLoMatch, you can use the following commands:
 ```
 # extract global features
@@ -112,7 +136,7 @@ python Test_cycle.py --dataset ETH --topk 6 --inlierd 0.2 --tau_2 0.5 --rr
 
 To evalute SGHR on your own dataset, you can follow [here](data/Readme.md).
 
-## Citation
+## 💡 Citation
 
 Please consider citing SGHR if this program benefits your project
 ```
@@ -125,5 +149,5 @@ year={2023}
 }
 ```
 
-## Other Projects
-Welcome to take a look at the homepage of our research group [WHU-USI3DV](https://github.com/WHU-USI3DV) !
+## 🔗 Related Projects
+Take a look at our previous works on [feature extraction](https://github.com/HpWang-whu/YOHO) and [pairwise registration](https://github.com/HpWang-whu/RoReg)!
