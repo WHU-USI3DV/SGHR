@@ -20,7 +20,7 @@ CVPR 2023
 <p align="center">
 <sup>1</sup>Wuhan University &nbsp;&nbsp; 
 <sup>2</sup>The University of Hong Kong &nbsp;&nbsp; 
-<sup>3</sup>Sun Yat-sen University &nbsp;&nbsp; 
+<sup>3</sup>Sun Yat-sen University &nbsp;&nbsp; <br>
 <sup>4</sup>Tsinghua University &nbsp;&nbsp; 
 <sup>5</sup>Texas A&M University &nbsp;&nbsp; <br>
 <sup>*</sup>The first two authors contribute equally. &nbsp;&nbsp; 
@@ -113,7 +113,7 @@ Then, you can train SGHR with the following commond:
 python Train.py
 ```
 
-## 💯 Test
+## ✏️ Test
 To evalute SGHR on 3DMatch and 3DLoMatch, you can use the following commands:
 ```
 # extract global features
