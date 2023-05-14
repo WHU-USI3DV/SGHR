@@ -32,6 +32,7 @@ In this paper, we present a new method for the multiview registration of point c
 
 
 ## 🆕 News
+- 2023-05-13: A introduction [video](https://youtu.be/Nh-9YcqqZQo) of SGHR on YouTube.
 - 2023-04-04: Release [SGHR](https://arxiv.org/abs/2304.00467) on Arxiv.
 - 2023-04-01: The code of SGHR is released.
 - 2023-02-28: SGHR is accepted by CVPR 2023! 🎉🎉
