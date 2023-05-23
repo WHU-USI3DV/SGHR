@@ -1,6 +1,6 @@
 import os
 import time
-from train import Trainer
+from train.trainer import Trainer
 import utils.parses as parses
 
 cfg,_ = parses.get_config()

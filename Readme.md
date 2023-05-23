@@ -29,17 +29,23 @@ CVPR 2023
 
 In this paper, we present a new method for the multiview registration of point cloud. Previous multiview registration methods rely on exhaustive pairwise registration to construct a densely-connected pose graph and apply Iteratively Reweighted Least Square (IRLS) on the pose graph to compute the scan poses. However, constructing a densely-connected graph is time-consuming and contains lots of outlier edges, which makes the subsequent IRLS struggle to find correct poses. To address the above problems, we first propose to use a neural network to estimate the overlap between scan pairs, which enables us to construct a sparse but reliable pose graph. Then, we design a novel history reweighting function in the IRLS scheme, which has strong robustness to outlier edges on the graph. In comparison with existing multiview registration methods, our method achieves $11$\% higher registration recall on the 3DMatch dataset and $\sim13$\% lower registration errors on the ScanNet dataset while reducing $\sim70$\% required pairwise registrations. Comprehensive ablation studies are conducted to demonstrate the effectiveness of our designs.
 
-
+<p align="center">
+ | 
+<a href="https://arxiv.org/abs/2304.00467" target="_blank">Paper</a> | 
+<a href="./utils/media/sghr_poster.png" target="_blank">Poster</a> | 
+<a href="https://www.youtube.com/watch?v=TGoCD4QqKEg" target="_blank">Video</a>
+ | 
+</p>
 
 ## 🆕 News
-- 2023-05-13: An introduction [video](https://www.youtube.com/watch?v=3Afg6Tx-k68) of SGHR on YouTube.
-- 2023-04-04: Release [SGHR](https://arxiv.org/abs/2304.00467) on Arxiv.
+- 2023-05-13: An introduction video of SGHR on YouTube.
+- 2023-04-04: Release SGHR on Arxiv. 
 - 2023-04-01: The code of SGHR is released.
 - 2023-02-28: SGHR is accepted by CVPR 2023! 🎉🎉
 
 ## ✨ Pipeline
 
-<img src="utils/pipeline.png" alt="Network" style="zoom:50%;">
+<img src="utils/media/pipeline.png" alt="Network" style="zoom:50%;">
 
 ## 💻 Requirements
 Here we offer the [YOHO](https://github.com/HpWang-whu/YOHO) backbone SGHR. Thus YOHO requirements need to be met:
