@@ -17,6 +17,6 @@ for name, dataset in tqdm(datasets.items()):
     for pid in tqdm(range(len(dataset.pc_ids))):
         desc = np.load(f'{args.yoho_desc_dir}/{dataset.name}/YOHO_Output_Group_feature')
         desc = np.mean(desc, axis = -1)
-        desc_dir = f'data/{dataset.name}/yoho_desc'
+        desc_dir = f'data/{dataset.name}/yoho_desc/{pid}.npy'
         make_non_exists_dir(desc_dir)
         np.save(f'{desc_dir}/{pid}.npy',desc)

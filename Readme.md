@@ -14,7 +14,7 @@ CVPR 2023
 <a href="http://yulanguo.me/" target="_blank">Yulan Guo</a><sup>3</sup>,
 <a href="https://yushen-liu.github.io/" target="_blank">Yu-Shen Liu</a><sup>4</sup>,
 <a href="https://www.cs.hku.hk/people/academic-staff/wenping" target="_blank">Wenping Wang</a><sup>5</sup>
-<a href="https://scholar.google.com/citations?hl=zh-CN&user=DZsF2oIAAAAJ" target="_blank">Bisheng Yang</a><sup>&dagger;,1</sup> <br>
+<a href="https://3s.whu.edu.cn/info/1025/1415.htm" target="_blank">Bisheng Yang</a><sup>&dagger;,1</sup> <br>
 </p>
 
 <p align="center">
