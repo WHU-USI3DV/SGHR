@@ -75,14 +75,6 @@ Specifically, The code has been tested with:
   pip install -r requirements.txt
   ```
 
-- Finally, compile the [CUDA based KNN searcher](https://github.com/vincentfpgarcia/kNN-CUDA):
-  ```
-  cd knn_search/
-  export CUDA_HOME=/usr/local/cuda-11.1 #We have checked cuda-11.1.
-  python setup.py build_ext --inplace
-  cd ..
-  ```
-
 ## 💾 Dataset & Pretrained model
 The datasets are accessible in [BaiduDesk](https://pan.baidu.com/s/1FcAPjmrsJ6EEPLbtf85Irw)(Code:oouk) and Google Cloud:
 
