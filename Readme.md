@@ -119,6 +119,8 @@ To evalute SGHR on 3DMatch and 3DLoMatch, you can use the following commands:
 python Test.py --dataset 3dmatch
 # conduct multiview registration
 python Test_cycle.py --dataset 3dmatch --rr
+# visualize the registration results
+python visual.py --dataset 3dmatch
 ```
 
 To evalute SGHR on ScanNet, you can use the following commands:
