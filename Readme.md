@@ -38,7 +38,7 @@ In this paper, we present a new method for the multiview registration of point c
 </p>
 
 ## 🆕 News
-- 2024-04-13: Online demo file, **use SGHR in the EASIEST way**! Just follow [here](data/readme.md).
+- 2024-04-13: Online demo file, **use SGHR in the EASIEST way**! Just follow [here](data/Readme.md).
 - 2023-05-13: An introduction video of SGHR on YouTube.
 - 2023-04-04: Release SGHR on Arxiv. 
 - 2023-04-01: The code of SGHR is released.
@@ -115,7 +115,7 @@ python Train.py
 
 ## ✏️ Use SGHR in the easiest way!
 Use SGHR is quite simple, prepare your point cloud files and no other effort needed!
-Follow [here](data/readme.md).
+Follow [here](data/Readme.md).
 
 ## ✏️ Test
 Try SGHR on the demo files by:
