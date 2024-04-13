@@ -76,6 +76,14 @@ Specifically, The code has been tested with:
   pip install -r requirements.txt
   ```
 
+- Optional. If you want to use SGHR on your own dataset or run the demo.py, you should install [MinkowskiEngine](https://github.com/NVIDIA/MinkowskiEngine) for FCGF/YOHO:
+  ```
+  conda install openblas-devel -c anaconda
+  git clone https://github.com/NVIDIA/MinkowskiEngine.git
+  cd MinkowskiEngine
+  python setup.py install --blas_include_dirs=${CONDA_PREFIX}/include --blas=openblas
+  ```
+
 ## 💾 Dataset & Pretrained model
 The datasets are accessible in [BaiduDesk](https://pan.baidu.com/s/1FcAPjmrsJ6EEPLbtf85Irw)(Code:oouk) and Google Cloud:
 
