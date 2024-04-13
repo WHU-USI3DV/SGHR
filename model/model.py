@@ -34,11 +34,18 @@ class VLAD_MLP(nn.Module):
         # conduct vlad for global feature extraction (already normalized)
         gf = self.vlador(data_dict)
         gfs.append(gf)
-        return {
-            'vlad_gf': gfs,
-            'gt_overlap': data_dict['gt_overlap']
-        }
-    
+        if 'gt_overlap' in data_dict:
+            # for training and benchmark
+            return {
+                'vlad_gf': gfs,
+                'gt_overlap': data_dict['gt_overlap']
+            }
+        else:
+            # for demo
+            return {
+                'vlad_gf': gfs
+            }
+        
               
 name2model = {
     'vlad':VLAD_MLP,

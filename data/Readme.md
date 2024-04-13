@@ -1,23 +1,16 @@
-## Test SGHR on your own dataset
+### Register a set of point clouds
 
-#### Step I: organize your dataset and log it into ```dataops/dataset```
-You can follow [YOHO](https://github.com/HpWang-whu/YOHO/tree/master/others) to organize your own dataset, place the dataset files to ```data```, and log it into ```dataops/dataset``` following [YOHO](https://github.com/HpWang-whu/YOHO/tree/master/others).
+#### Step I: Download yoho checkpoints:
+Save [back ckpt](https://github.com/HpWang-whu/YOHO/blob/master/model/Backbone/best_val_checkpoint.pth) to ```yoho/ckpts/backbone```
+Save [yoho ckpt](https://github.com/HpWang-whu/YOHO/blob/master/model/PartI_train/model_best.pth) to ```yoho/ckpts/yoho```
 
-#### Step II: prepare yoho-desc
-Extract YOHO-Desc on (randomly sampled) keypoints following [YOHO](https://github.com/HpWang-whu/YOHO/tree/master/others). Note that the extracted YOHO-Desc is rotation-equivariant but we only need the rotation-invariant yoho-desc.
-We thus provide a script to convert YOHO-Desc to yoho-desc, you can run it as follows:
+#### Step II: Run SGHR on your raw point clouds.
+You can just save your point clouds (.ply/.pcd/.npy) to somewhere like ```data/demo```. 
+Then just run:
 ```
-python data/convert.py --dataset <your dataset name> --yoho_desc_dir <folder of YOHO_FCGF>
+python demo.py --pcdir data/demo
 ```
-where \<your dataset name\> is the name of your dataset (the folder name saved to '''data''' and the name logged in ```dataops/dataset```),  \<folder of YOHO_FCGF\> is the folder where YOHO-Desc is saved by [YOHO](https://github.com/HpWang-whu/YOHO/tree/master/others) and it is typically the folder end with ```YOHO_FCGF/Testset```.
-
-#### Step III: conduct multiview registration
-- Extract global features
-```
-python Test.py --dataset <your dataset name>
-```
-- Construct sparse graph and condute multiview registration
-```
-python Test_cycle.py --dataset <your dataset name> --topk *** --inlierd ***
-```
-where topk means use top-k scored edges in sparse graph construction, inlierd means the inlier threshold in RANSAC.
+The registration results will be saved to:
+- ```data/demo/registration/kpts```: sampled kpts of the point clouds in "pc_dir" for yoho feature extraction;
+- ```data/demo/registration/yoho```: yoho features of the point clouds in "pc_dir";
+- ```data/demo/registration/multi_reg```: overlap.txt saving estimated overlap ratio, pose.txt saving the estimated pc pose.

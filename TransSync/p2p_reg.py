@@ -52,8 +52,11 @@ class refiner():
         return Tnew
 
 class p2preg():
-    def __init__(self, cfg):
-        self.inlierd = cfg.inlierd
+    def __init__(self, cfg = None, inlierd = None):
+        if inlierd is None:
+            self.inlierd = cfg.inlierd
+        else:
+            self.inlierd = inlierd
         self.iters = 50000
         self.KNN=knn_module.KNN(1)
         self.refiner = refiner()
@@ -91,11 +94,20 @@ class p2preg():
         target_pcd = open3d.geometry.PointCloud()
         target_pcd.points = open3d.utility.Vector3dVector(keys1)
         coors = open3d.utility.Vector2iVector(match)
-        result = open3d.registration.registration_ransac_based_on_correspondence(
-        source_pcd, target_pcd, coors,
-        self.inlierd,
-        open3d.registration.TransformationEstimationPointToPoint(False), 3,
-        open3d.registration.RANSACConvergenceCriteria(self.iters, 1000))            
+
+        # in case of other open3d version
+        if hasattr(open3d, 'pipelines'):
+            regmodule = open3d.pipelines
+        else:
+            regmodule = open3d
+        result = regmodule.registration.registration_ransac_based_on_correspondence( \
+        source = source_pcd, \
+        target = target_pcd, \
+        corres = coors,\
+        max_correspondence_distance = self.inlierd,\
+        estimation_method = regmodule.registration.TransformationEstimationPointToPoint(with_scaling = False), \
+        ransac_n = 4,\
+        criteria = regmodule.registration.RANSACConvergenceCriteria(self.iters, 1000))     
         trans = result.transformation
         trans = np.linalg.inv(trans)
         

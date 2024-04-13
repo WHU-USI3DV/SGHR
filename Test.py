@@ -12,15 +12,9 @@ from utils.utils import (to_cuda,
 class tester():
     def __init__(self, cfg):
         self.cfg = cfg
-        # name only  --  change testset in cfg
-        self.dset_list = read_pickle(self.cfg.testlist)
-        # load descriptors
-        _, self.dset = bulid_testset(cfg)
         # for model
         self.pth_fn = f'{self.cfg.model_fn}/model_best.pth'
         self._init_load_model()
-        # for saving
-        self.d_save = f'{self.cfg.save_dir}/predict_overlap/{self.cfg.testset}'
 
     def _init_load_model(self):
         self.network = name2model[self.cfg.model_type](self.cfg).cuda()
@@ -28,7 +22,7 @@ class tester():
         if os.path.exists(self.pth_fn): 
             checkpoint=torch.load(self.pth_fn)
             self.network.load_state_dict(checkpoint['network_state_dict'])
-            print(f'load model from {self.pth_fn}')
+            # print(f'load model from {self.pth_fn}')
     
     def _generate_simmat(self, batch):
         batch = to_cuda(batch)
@@ -40,6 +34,13 @@ class tester():
 
     def __call__(self):
         recalls = []
+        # name only  --  change testset in cfg
+        self.dset_list = read_pickle(self.cfg.testlist)
+        # load descriptors
+        _, self.dset = bulid_testset(cfg)
+        # for saving
+        self.d_save = f'{self.cfg.save_dir}/predict_overlap/{self.cfg.testset}'
+        # estimation
         for i, batch in enumerate(tqdm(self.dset)):
             sn, _ = self.dset_list[i]
             save_fn = f'{self.d_save}/{sn}/ratio.npy'
