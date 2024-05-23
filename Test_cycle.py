@@ -209,7 +209,7 @@ class cycle_tester():
     
     def run(self):
         self.run_onedatasets(self.datasets) 
-        if self.datasets['wholesetname'] is '3dmatch':
+        if self.datasets['wholesetname'] == '3dmatch':
             self.run_onedatasets_givengraph(self.datasetsLo)
 
             
